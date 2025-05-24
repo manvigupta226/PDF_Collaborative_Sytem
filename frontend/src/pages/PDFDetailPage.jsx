@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import instance from "../api/axios";
 
 const PDFDetailPage = () => {
-  const { id } = useParams();
+  const location = useLocation();
+  const { id } = location.state;
   const token = localStorage.getItem("token");
 
   const [pdf, setPdf] = useState(null);

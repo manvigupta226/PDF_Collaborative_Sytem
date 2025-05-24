@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import instance from "../api/axios";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-// const navigate = useNavigate();
 const Dashboard = () => {
   const [pdfs, setPdfs] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
+  const navigate = useNavigate();
 
   const token = localStorage.getItem("token");
 
@@ -160,7 +160,7 @@ const Dashboard = () => {
                 <div
                   key={pdf.id}
                   className="pdf-item"
-                  onClick={() => (window.location.href = `/pdf/${pdf.id}`)}
+                  onClick={() => (navigate("/file", {state: {id: pdf.id}}))}
                 >
                   <div>
                     <div className="pdf-name">📄 {pdf.original_name}</div>

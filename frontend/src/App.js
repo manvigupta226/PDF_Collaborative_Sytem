@@ -34,7 +34,7 @@ function App() {
           }
         />
         <Route
-          path="/pdf/:id"
+          path="/file"
           element={
             isAuthenticated() ? <PDFDetailPage /> : <Navigate to="/login" replace />
           }
