@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'http://localhost:3000/api', // Update with your backend URL on deployment
+  baseURL: 'https://pdf-collaborative-sytem-1.onrender.com', // Update with your localhost URL while using on local
 });
 
 instance.interceptors.request.use((config) => {
