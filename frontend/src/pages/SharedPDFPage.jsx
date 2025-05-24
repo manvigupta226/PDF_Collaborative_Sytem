@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 const SharedPDFPage = () => {
   const { share_id } = useParams();
-  const baseUrl = "http://localhost:5000"
+  const baseUrl = "https://pdf-collaborative-sytem-1.onrender.com"
   const downloadUrl = `${baseUrl}/shared/download/${share_id}`;
 
   return (
