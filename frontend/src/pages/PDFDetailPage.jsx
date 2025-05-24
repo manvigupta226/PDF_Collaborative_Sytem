@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "../api/axios";
+import instance from "../api/axios";
 
 const PDFDetailPage = () => {
   const { id } = useParams();
@@ -13,7 +13,7 @@ const PDFDetailPage = () => {
   useEffect(() => {
     const fetchPDFDetails = async () => {
       try {
-        const res = await axios.get(`/api/pdf/${id}`, {
+        const res = await instance.get(`/api/pdf/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setPdf(res.data.pdf);

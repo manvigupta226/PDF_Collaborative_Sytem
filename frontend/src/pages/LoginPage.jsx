@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "../api/axios";
+import instance from "../api/axios";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
@@ -13,7 +13,7 @@ export default function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/api/auth/login", form);
+      const res = await instance.post("/api/auth/login", form);
       localStorage.setItem("token", res.data.token); // store JWT
       alert("Login successful!");
       navigate("/dashboard");

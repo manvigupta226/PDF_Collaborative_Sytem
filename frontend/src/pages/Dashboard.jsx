@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "../api/axios";
+import instance from "../api/axios";
 // import { useNavigate } from "react-router-dom";
 
 // const navigate = useNavigate();
@@ -12,7 +12,7 @@ const Dashboard = () => {
 
   const fetchPDFs = async () => {
     try {
-      const res = await axios.get("/api/pdf/mypdfs", {
+      const res = await instance.get("/api/pdf/mypdfs", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
