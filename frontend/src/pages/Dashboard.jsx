@@ -34,7 +34,7 @@ const Dashboard = () => {
     formData.append("file", selectedFile);
 
     try {
-      await axios.post("/api/files/upload", formData, {
+      await instance.post("/api/files/upload", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",

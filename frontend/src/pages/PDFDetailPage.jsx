@@ -28,7 +28,7 @@ const PDFDetailPage = () => {
 
   const handleCommentPost = async () => {
     try {
-      const res = await axios.post(
+      const res = await instance.post(
         `/api/pdf/${id}/comments`,
         { content: newComment },
         {

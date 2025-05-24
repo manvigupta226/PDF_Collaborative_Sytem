@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "../api/axios";
+import instance from "../api/axios";
 import { useNavigate } from "react-router-dom";
 
 export default function SignupPage() {
@@ -13,7 +13,7 @@ export default function SignupPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("/api/auth/signup", form);
+      await instance.post("/api/auth/signup", form);
       alert("Signup successful!");
       navigate("/login");
     } catch (err) {
