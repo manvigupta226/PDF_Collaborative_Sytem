@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 
 const SharedPDFPage = () => {
   const { share_id } = useParams();
-
-  const downloadUrl = `http://localhost:5000/shared/download/${share_id}`;
+  const baseUrl = "http://localhost:5000"
+  const downloadUrl = `${baseUrl}/shared/download/${share_id}`;
 
   return (
     <>
