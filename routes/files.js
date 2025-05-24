@@ -6,13 +6,14 @@ const db = require('../config/db');
 const { v4: uuidv4 } = require('uuid');
 
 router.post('/upload', auth, upload.single('file'), async (req, res) => {
-  const { originalname, path } = req.file;
-  const shareId = uuidv4();
+  const { originalname } = req.file;
+  const share_id = uuidv4();
+  const path = `uploads/${originalname}`  
 
   try {
-    await db.execute(
-      'INSERT INTO pdfs (user_id, original_name, file_path, shareId) VALUES (?, ?, ?, ?)',
-      [req.user, originalname, path, shareId]
+    await db.query(
+      'INSERT INTO pdfs (user_id, original_name, file_path, share_id) VALUES ($1, $2, $3, $4)',
+      [req.user, originalname, path, share_id]
     );
     res.status(200).json({ msg: 'File uploaded successfully' });
   } catch (err) {

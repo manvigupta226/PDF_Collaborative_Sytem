@@ -3,15 +3,23 @@ const router = express.Router();
 const db = require('../config/db');
 const path = require('path');
 
-router.get('/:shareId', async (req, res) => {
+router.get('/:share_id', async (req, res) => {
   try {
-    const [pdf] = await db.execute('SELECT * FROM pdfs WHERE shareId = ?', [req.params.shareId]);
-    const pathDir = __dirname + '/../uploads/'+pdf[0].original_name;
-    // const filePath = path.resolve(pathDir);
-    console.log(pathDir);
-    return res.download(pathDir, pdf[0].original_name);
+    const result = await db.query('SELECT * FROM pdfs WHERE share_id = $1', [req.params.share_id]);
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'File not found' });
+    }
+
+    const pdf = result.rows[0];
+    const pathDir = `${__dirname}/../uploads/${pdf.original_name}`;
+
+    console.log(__dirname, pathDir)
+
+    return res.download(pathDir, pdf.original_name);
   } catch (err) {
-    res.status(500).json({ error: err });
+    console.error("Error downloading file:", err);
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 
