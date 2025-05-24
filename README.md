@@ -20,7 +20,7 @@ A full-stack web application that allows users to **upload, view, share, and com
 
 | Frontend              | Backend                | Database |
 |-----------------------|------------------------|----------|
-| React, Tailwind CSS   | Node.js, Express.js    | MySQL    |
+| React, CSS            | Node.js, Express.js    | Postgres |
 
 ---
 
